@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Meshing 1/Scenes/NormalMeshes.unity
     guid: a299493e78944b149894a112dd327189
+  - enabled: 1
+    path: Assets/Scenes/isThisLoss.unity
+    guid: ab1dc296f64a4794e9165e6dc6a88807
   m_configObjects:
     Niantic.Lightship.AR.LightshipSettings: {fileID: 11400000, guid: 76b83a446bb5bdf469c5245f7d499093,
       type: 2}
