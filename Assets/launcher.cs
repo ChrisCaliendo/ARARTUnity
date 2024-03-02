@@ -6,25 +6,24 @@ public class Launcher : MonoBehaviour
 {
     public GameObject _prefab;
     public Camera view;
+    public float cooldownTime = 1.0f; // Adjust the cooldown time in seconds
+    private float lastTapTime;
+
     void Update()
     {
-        Debug.Log("error");
-        #if UNITY_EDITOR
-        if(Input.GetMouseButtonDown(0))
-        #else
-        if (Input.touchCount > 0)
-        #endif
+        if(Input.GetMouseButtonDown(0) && Time.time - lastTapTime > cooldownTime)
         {
-            //spawn in front of at the camera
-            var pos = view.transform.position;
-            var forw = view.transform.forward;
-            var thing = Instantiate(_prefab, pos+(forw*0.1f), Quaternion.identity);
+            Ray ray = view.ScreenPointToRay(Input.GetTouch(0).position);
+            RaycastHit hit;
 
-            //if it has physics fire it!
-            if (thing.TryGetComponent(out Rigidbody rb))
+            if (Physics.Raycast(ray, out hit))
             {
-                rb.AddForce(forw * 200.0f);
+                //spawn in front of at the camera
+                var thing = Instantiate(_prefab, hit.point, Quaternion.identity);
+
+                //if it has physics fire it!
             }
         }
+        
     }
 }
